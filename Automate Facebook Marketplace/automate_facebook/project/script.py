@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
-# Multilogin Browser setup
+
 MULTILOGIN_API_KEY = 'your_multilogin_api_key'
 BROWSER_PROFILE_ID = 'your_browser_profile_id'
 
@@ -16,7 +16,7 @@ def start_multilogin_browser(api_key, profile_id):
     service = Service(executable_path="path_to_your_chromedriver")
     driver = webdriver.Chrome(service=service, options=options)
 
-    # Connect to Multilogin Browser
+    
     multilogin_url = f"http://localhost:35000/api/v2/profile/{profile_id}/start?automation=true"
     response = requests.get(multilogin_url, headers={"Authorization": f"Bearer {api_key}"})
 
@@ -46,10 +46,10 @@ def automate_facebook_listing(driver, listing_details):
     password_elem.send_keys("your_facebook_password")
     login_button.click()
 
-    # Wait for login to complete
+    
     time.sleep(10)
 
-    # Fill out the listing form
+    
     title_elem = driver.find_element(By.NAME, "title")
     price_elem = driver.find_element(By.NAME, "price")
     category_elem = driver.find_element(By.NAME, "category")
@@ -62,15 +62,15 @@ def automate_facebook_listing(driver, listing_details):
     description_elem.send_keys(listing_details["description"])
     location_elem.send_keys(listing_details["location"])
 
-    # Upload an image
+    
     image_elem = driver.find_element(By.NAME, "image")
     image_elem.send_keys(listing_details["image_path"])
 
-    # Submit the form
+    
     submit_button = driver.find_element(By.NAME, "submit")
     submit_button.click()
 
-    # Wait for the listing to be posted
+    
     time.sleep(10)
 
 
